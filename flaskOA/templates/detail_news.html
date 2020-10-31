@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+    新闻管理-详情
+{% endblock %}
+{% block contain_title %}
+    {{ new_obj.title }}
+{% endblock %}
+{% block contain %}
+    <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">来源：{{ new_obj.author }} {{ new_obj.ntime }}</div>
+                        <hr>
+                        <div class="col-lg-12 text-center">
+                            <img src="/{{ new_obj.picture }}" class="col-lg-12">
+                            <video src="/{{ new_obj.picture }}" controls="controls">
+                            </video>
+                        </div>
+                        <div class="col-lg-12">
+                            <p>{{ new_obj.content }}
+                            </p>
+{#                            <p>为培养真正符合时代需求的高端IT人才，中公教育优就业以高瞻的视野，经多年布局，打造人才培训服务体系。以企业需求为导向，以行业未来为驱动，向企业和社会不断输送IT人才。</p>#}
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+{% endblock %}

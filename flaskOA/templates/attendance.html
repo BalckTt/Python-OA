@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}
+    个人考勤管理
+{% endblock %}
+{% block contain_title %}
+个人考勤管理
+{% endblock %}
+{% block contain %}
+<div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#kqjl" data-toggle="tab">考勤记录</a></li>
+                        <li><a href="#kqsq" data-toggle="tab">考勤申请</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="kqjl" class="tab-pane fade in active">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>假条编号</th>
+                                    <th>假条状态</th>
+                                    <th>请假类型</th>
+                                    <th>请假原因</th>
+                                    <th>起始时间</th>
+                                    <th>结束时间</th>
+                                    <th>审核人</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                            {% for att_obj in att_obj_list %}
+                                <tr>
+                                    <td class="col-lg-1">{{ att_obj.id }}</td>
+                                    <td class="col-lg-1">{{ att_obj.astauts }}</td>
+                                    <td class="col-lg-1">{{ att_obj.atype }}</td>
+                                    <td class="col-lg-3">{{ att_obj.reason }}</td>
+                                    <td class="col-lg-2">{{ att_obj.start_time }}</td>
+                                    <td class="col-lg-2">{{ att_obj.end_time }}</td>
+                                    <td class="col-lg-2">{{ att_obj.examine }}</td>
+                                </tr>
+                            {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="kqsq" class="tab-pane fade in">
+                            <form method="post" action="/apply_attendance/">
+                                <div class="form-group">
+                                    <label>原因:</label>
+                                    <textarea class="form-control" name="reason"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>类型:</label>
+                                    <select class="form-control" name="type">
+                                        <option value="事假" selected>事假</option>
+                                        <option value="婚嫁">婚嫁</option>
+                                        <option value="产假">产假</option>
+                                        <option value="病假">病假</option>
+                                        <option value="年假">年假</option>
+                                        <option value="调休">调休</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>假期时长(天):</label>
+                                    <input class="form-control" type="text" name="day">
+                                </div>
+                                <div class="form-group">
+                                    <label>开始时间:</label>
+                                    <input class="form-control" type="text" name="start">
+                                </div>
+                                <div class="form-group">
+                                    <label>结束时间:</label>
+                                    <input class="form-control" type="text" name="end">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+{% endblock %}

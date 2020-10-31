@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}
+    首页
+{% endblock %}
+{% block contain_title %}
+    首页
+{% endblock %}
+{% block contain %}
+    <script src="/static/lib/echarts/js/echarts.min.js"></script>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="show"></div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        公司新闻
+                        <a class="pull-right" href="#">查看更多...</a>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="col-lg-6"><a href="#">哈哈哈</a></div>
+                        <div class="col-lg-6 text-right">2020-05-06 16:37:39</div>
+
+                        <div class="col-lg-6"><a href="#">新闻99</a></div>
+                        <div class="col-lg-6 text-right">2020-05-06 16:37:39</div>
+
+                        <div class="col-lg-6"><a href="#">新闻98</a></div>
+                        <div class="col-lg-6 text-right">2020-05-06 16:37:39</div>
+
+                        <div class="col-lg-6"><a href="#">新闻97</a></div>
+                        <div class="col-lg-6 text-right">2020-05-06 16:37:39</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        考勤情况
+                        <a class="pull-right" href="#">查看更多...</a>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="col-lg-6">摔伤了，请假3天。</div>
+                        <div class="col-lg-6 text-right">已驳回</div>
+
+                        <div class="col-lg-6">住院5天</div>
+                        <div class="col-lg-6 text-right">已通过</div>
+
+                        <div class="col-lg-6">因家里有事，调休1天</div>
+                        <div class="col-lg-6 text-right">已驳回</div>
+
+                        <div class="col-lg-6">请年假1天</div>
+                        <div class="col-lg-6 text-right">申请中</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <script>
+        $(function () {
+            alert('xx');
+            var myChart = echarts.init(document.getElementById('show'));
+            var option = {
+                title: {
+                    text: '公司各部门职员人数统计'
+                },
+                tooltip: {},
+                legend: {
+                    //data: ['职员人数']
+                },
+                xAxis: {
+                    data: ["人事部", "后勤部", "安保部", "市场部", "技术部", "新媒体部", "法务部", "董事会", "财务部"]
+                },
+                yAxis: {},
+                series: [{
+                    name: '职员人数',
+                    type: 'bar', //柱状图
+                    data: [990, 0, 0, 907, 961, 943, 0, 1, 1001]
+                }]
+            };
+            myChart.setOption(option);
+
+        //发送ajax请求
+    $.ajax({
+        url:'/indexajax/',
+        type:'get',
+        sucess:function (result) {
+            {#alert("xx");#}
+            console.log(result);
+            var x=[]; //盛放名称
+            var y=[]; // 盛放部门人数
+
+            for ( var i in result) {
+                {#alert("cc");#}
+                var deptObj = result[i];
+                console.log(deptObj);
+                x.push(deptObj.dept_name);
+                y.push(deptObj.num);
+            }
+            // 2.将获取的x,y数组中的值赋值给echarts
+            option['xAxis']['data'] = x;
+            option['series'][0]['data'] = y;
+
+            // 3.将参数设置个div对象。
+            myChart.setOption(option);
+            },
+            error: function (result) {
+                alert('error');
+            }
+
+
+    });
+            });
+    </script>
+
+{% endblock %}

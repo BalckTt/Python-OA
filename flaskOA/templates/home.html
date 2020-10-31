@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业3</title>
+    <style>
+        .box{
+            border: 1px solid green;
+            width: 900px;
+
+        }
+        td{
+            border:1px solid green;
+        }
+        .teshu{
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+{% for i in city %}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ i }}&nbsp;&nbsp;&nbsp;&nbsp;
+{% endfor %}
+<br><br>
+<table class="box" cellspacing="0px" cellpadding="0px">
+    {% for key,value in rome.items() %}
+        {% if key=="房屋名称" %}
+            <tr class="teshu">
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+{#    <tr>#}
+{#        <td>{{ rome.key(0) }}</td>#}
+{#        <td></td>#}
+{#    </tr>#}
+</table>
+</body>
+</html>

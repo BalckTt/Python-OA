@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+    新闻管理-添加
+{% endblock %}
+{% block contain_title %}
+    新闻管理-添加
+{% endblock %}
+{% block contain %}
+<div class="row">
+        <div class="row">
+            <form method="post" enctype="multipart/form-data" action="/add_news/">
+                <div class="form-group">
+                    <label class="control-label">标题:</label>
+                    <input class="form-control" type="text" name="title" placeholder="标题">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">作者:</label>
+                    <input class="form-control" type="text" name="author" placeholder="作者"
+                    value = {{ request.cookies.get("person_name") }} disabled>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">内容:</label>
+                    <textarea class="form-control ckeditor" name="content"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">图片:</label>
+                    <input type="file" name="picture">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script src="../static/lib/ckeditor/ckeditor.js"></script>
+{% endblock %}

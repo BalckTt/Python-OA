@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}
+    个人考勤管理
+{% endblock %}
+{% block contain_title %}
+下属考勤管理
+{% endblock %}
+{% block contain %}
+<div class="row">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>假条编号</th>
+                            <th>假条状态</th>
+                            <th>请假类型</th>
+                            <th>请假原因</th>
+                            <th>起始时间</th>
+                            <th>结束时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                    {% for i in list1 %}
+                        <tr>
+                            <td class="col-lg-1">{{ i.id }}</td>
+                            <td class="col-lg-1">{{ i.astauts }}</td>
+                            <td class="col-lg-1">{{ i.atype }}</td>
+                            <td class="col-lg-3">{{ i.reason }}</td>
+                            <td class="col-lg-2">{{ i.start_time }}</td>
+                            <td class="col-lg-2">{{ i.end_time }}</td>
+                            <td class="col-lg-2">
+                                <a href="/update_att_sub/?id={{ i.id }}&status=通过" class="btn btn-default">通过</a>
+                                <a href="/update_att_sub/？id={{ i.id }}&status=驳回" class="btn btn-default">驳回</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+{% endblock %}

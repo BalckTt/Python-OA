@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}
+职员管理-编辑
+{% endblock %}
+{% block contain_title %}
+职员管理-编辑
+{% endblock %}
+{% block contain %}
+          <div class="row">
+                <div class="col-lg-12">
+
+
+                    <div class="row">
+                        <p></p>
+                        <form method="post" enctype="multipart/form-data" action="/edit_person/">
+                            <input  name="id" type="hidden"
+                                   value="{{ person.id }}">
+                            <div class="form-group">
+                                <label class="control-label">用户名：</label>
+                                <input class="form-control" type="text" name="username" value="{{person.name }}">
+                                <label class="text-primary username_error"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">密码：</label>
+                                <input class="form-control" type="password" name="password" value="{{ person.password }}*">
+                                <label class="text-primary password_error"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">昵称：</label>
+                                <input class="form-control" type="text" name="nickname" value="{{ person.nickname }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">性别：</label>
+                                <select class="form-control" name="gender">
+                                    {% if person.gender == "男" %}
+                                        <option value="男" selected>男</option>
+                                        <option value="女">女</option>
+                                    {% endif %}
+                                    <option value="男" >男</option>
+                                    <option value="女" selected>女</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">年龄：</label>
+                                <input class="form-control" type="number" name="age" value="{{ person.age }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">电话：</label>
+                                <input class="form-control" type="text" name="phone" value="{{ person.phone }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">邮箱：</label>
+                                <input class="form-control" type="text" name="email" value="{{ person.email }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">头像：</label>
+                                <input type="file" name="photo">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">地址：</label>
+                                <textarea class="form-control" name="address">{{ person.address }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">职位：</label>
+                                <select class="form-control" name="position_id">
+                                    {% for i in position %}
+                                        {%  if i.name == person.positions.name %}
+                                            <option value="{{ i.id }}" selected>{{ i.name }}</option>
+                                        {% else %}
+                                            <option value="{{ i.id}}">{{ i.name }}</option>
+                                        {% endif %}
+
+                                    {% endfor %}
+{#                                    <option value="1">财务部_部长</option>#}
+{##}
+{#                                    <option value="2">技术部_部长</option>#}
+{##}
+{#                                    <option value="3" selected>市场部_部长</option>#}
+{##}
+{#                                    <option value="4">人事部_部长</option>#}
+{##}
+{#                                    <option value="5">新媒体部_部长</option>#}
+{##}
+{#                                    <option value="6">财务部_主任</option>#}
+{##}
+{#                                    <option value="7">技术部_主任</option>#}
+{##}
+{#                                    <option value="8">市场部_主任</option>#}
+{##}
+{#                                    <option value="9">人事部_主任</option>#}
+{##}
+{#                                    <option value="10">新媒体部_主任</option>#}
+{##}
+{#                                    <option value="11">财务部_职员</option>#}
+{##}
+{#                                    <option value="12">技术部_职员</option>#}
+{##}
+{#                                    <option value="13">市场部_职员</option>#}
+{##}
+{#                                    <option value="14">人事部_职员</option>#}
+{##}
+{#                                    <option value="15">新媒体部_职员</option>#}
+{##}
+{#                                    <option value="16">董事长</option>#}
+{##}
+{#                                    <option value="17">副董事长</option>#}
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+{% endblock %}

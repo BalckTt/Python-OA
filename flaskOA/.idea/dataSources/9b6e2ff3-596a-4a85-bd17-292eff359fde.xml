@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="sqlite2">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.15">
+    <root id="1">
+      <ServerVersion>3.31.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="alembic_version"/>
+    <table id="7" parent="2" name="attendance"/>
+    <table id="8" parent="2" name="department"/>
+    <table id="9" parent="2" name="news"/>
+    <table id="10" parent="2" name="permission"/>
+    <table id="11" parent="2" name="permission_position"/>
+    <table id="12" parent="2" name="person"/>
+    <table id="13" parent="2" name="position"/>
+    <table id="14" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <column id="15" parent="6" name="version_num">
+      <Position>1</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="16" parent="6" name="sqlite_autoindex_alembic_version_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>version_num</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="17" parent="6" name="alembic_version_pkc">
+      <ColNames>version_num</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_alembic_version_1</UnderlyingIndexName>
+    </key>
+    <column id="18" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="7" name="reason">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="20" parent="7" name="atype">
+      <Position>3</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="21" parent="7" name="adate">
+      <Position>4</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="22" parent="7" name="start_time">
+      <Position>5</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="23" parent="7" name="end_time">
+      <Position>6</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="24" parent="7" name="astauts">
+      <Position>7</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="25" parent="7" name="examine">
+      <Position>8</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="26" parent="7" name="person_id">
+      <Position>9</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <key id="27" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="28" parent="7">
+      <ColNames>person_id</ColNames>
+      <RefTableName>person</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="29" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="8" name="name">
+      <Position>2</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="31" parent="8" name="desc">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <key id="32" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="33" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="9" name="title">
+      <Position>2</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <column id="35" parent="9" name="author">
+      <Position>3</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="36" parent="9" name="ntime">
+      <Position>4</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="37" parent="9" name="content">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="38" parent="9" name="picture">
+      <Position>6</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <key id="39" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="10" name="name">
+      <Position>2</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="42" parent="10" name="desc">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <key id="43" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="11" name="permission_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="45" parent="11" name="position_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <foreign-key id="46" parent="11">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>permission</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="47" parent="11">
+      <ColNames>position_id</ColNames>
+      <RefTableName>position</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="48" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="12" name="password">
+      <Position>3</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="12" name="nickname">
+      <Position>4</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="52" parent="12" name="gender">
+      <Position>5</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="53" parent="12" name="age">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="54" parent="12" name="job_num">
+      <Position>7</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="55" parent="12" name="phone">
+      <Position>8</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="56" parent="12" name="email">
+      <Position>9</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="57" parent="12" name="picture">
+      <Position>10</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <column id="58" parent="12" name="address">
+      <Position>11</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <column id="59" parent="12" name="score">
+      <Position>12</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="60" parent="12" name="position_id">
+      <Position>13</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <key id="61" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="62" parent="12">
+      <ColNames>position_id</ColNames>
+      <RefTableName>position</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="63" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="65" parent="13" name="level">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="66" parent="13" name="Department_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <key id="67" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="68" parent="13">
+      <ColNames>Department_id</ColNames>
+      <RefTableName>department</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="69" parent="14" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="70" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="71" parent="14" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="72" parent="14" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="73" parent="14" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+  </database-model>
+</dataSource>

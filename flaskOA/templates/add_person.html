@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}
+    职员管理
+{% endblock %}
+{% block contain_title %}
+    个人中心-添加
+{% endblock %}
+{% block contain %}
+     <div class="row">
+                <div class="col-lg-12">
+
+
+                    <div class="row">
+                        <p></p>
+                        <form method="post" enctype="multipart/form-data" action="/add_person2/">
+                            <input id="csrf_token" name="csrf_token" type="hidden"
+                                   value="IjIyZjA5NzY2MjI4MGZiMDc3OGQ0ZTg2ZTdiOGZkYTM5NTExNzFkODQi.XrNpNA.ZxPBMg01inEMf4xF_tONt1YOKz0">
+                            <div class="form-group">
+                                <label class="control-label">用户名：</label>
+                                <input class="form-control" type="text" name="username">
+                                <label class="text-primary username_error"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">密码：</label>
+                                <input class="form-control" type="password" name="password">
+                                <label class="text-primary password_error"></label>
+                            </div>
+							<div class="form-group">
+                                <label class="control-label">职位：</label>
+                                <select class="form-control" name="position_id">
+{#                                    {% for i,j in dict1.items() %}#}
+{#                                        <option value="{{ i }}">{{ j }}</option>#}
+{#                                    {% endfor %}#}
+                                        {% for i in posi %}
+                                            <option value="{{ i.id }}">{{ i.name }}</option>
+                                        {% endfor %}
+
+{#                                    <option value="1">技术部_部长</option>#}
+{##}
+{#                                    <option value="2">财务部_部长</option>#}
+{##}
+{#                                    <option value="3">市场部_部长</option>#}
+{##}
+{#                                    <option value="4">人事部_部长</option>#}
+{##}
+{#                                    <option value="5">新媒体部_部长</option>#}
+{##}
+{#                                    <option value="6">财务部_主任</option>#}
+{##}
+{#                                    <option value="7">技术部_主任</option>#}
+{##}
+{#                                    <option value="8">市场部_主任</option>#}
+{##}
+{#                                    <option value="9">人事部_主任</option>#}
+{##}
+{#                                    <option value="10">新媒体部_主任</option>#}
+{##}
+{#                                    <option value="11">财务部_职员</option>#}
+{##}
+{#                                    <option value="12">技术部_职员</option>#}
+{##}
+{#                                    <option value="13">市场部_职员</option>#}
+{##}
+{#                                    <option value="14">人事部_职员</option>#}
+{##}
+{#                                    <option value="15">新媒体部_职员</option>#}
+{##}
+{#                                    <option value="16">董事长</option>#}
+{##}
+{#                                    <option value="17">副董事长</option>#}
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+{% endblock %}
